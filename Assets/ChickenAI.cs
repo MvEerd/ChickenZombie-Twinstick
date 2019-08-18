@@ -9,7 +9,7 @@ public class ChickenAI : MonoBehaviour
     public GameObject target;
     public NavMeshAgent agent;
     public Text scoreText;
-   
+    private bool alive = true;
 
     // Start is called before the first frame update
     void Start()
@@ -26,12 +26,14 @@ public class ChickenAI : MonoBehaviour
     {
         agent.destination = target.transform.position;
     }
-
+    
     private void OnTriggerEnter(Collider other)
     {
-        Destroy(gameObject); //Destroy AI Enemy
+        if (!alive) return;
+        alive = false;
         Destroy(other.gameObject); // Destroy projectile
         target.GetComponent<PlayerControl>().score += 1;
         scoreText.text = "Score: " + target.GetComponent<PlayerControl>().score;
+        Destroy(gameObject); //Destroy AI Enemy
     }
 }
