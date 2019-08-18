@@ -9,6 +9,8 @@ public class PlayerControl : MonoBehaviour
     public float speed;
     public Gun currentGun;
 
+    public GameObject Gameover;
+
     public int score = 0;
     static public float timeSinceLastBullet = 0f;
 
@@ -53,6 +55,11 @@ public class PlayerControl : MonoBehaviour
             currentGun.Shoot(transform, aimX, aimY);
         }
     }
+
+    private void OnDestroy() {
+        Gameover.active = true;
+ 
+}
     void setAnimationState(string animation)
     {
         Animator animator = GetComponent<Animator>();
