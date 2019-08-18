@@ -8,6 +8,7 @@ public class Powerup : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (!other.gameObject.GetComponent<PlayerControl>()) return;
         other.gameObject.GetComponent<PlayerControl>().currentGun = powerupGun;
     }
 }
