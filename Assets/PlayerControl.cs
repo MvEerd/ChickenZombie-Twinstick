@@ -14,6 +14,14 @@ public class PlayerControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+    }
+
+    public float minmax(float x, float min, float max, float new_min, float new_max)
+    {
+
+        x = (x - min) * (new_max - new_min) / (max - min) + new_min;
+        return x;
+
 
     }
 
@@ -36,10 +44,12 @@ public class PlayerControl : MonoBehaviour
             setAnimationState("");
         }
 
+        float mouseAxisX = minmax(Input.mousePosition.x, 0, Screen.width, -1, 1);
+        float mouseAxisY = minmax(Input.mousePosition.y, 0, Screen.height, -1, 1);
 
-
-        float mouseX = Input.GetAxis("Mouse X");
-        float mouseY = Input.GetAxis("Mouse Y");
+        float mouseX = Input.GetMouseButton(0) ? mouseAxisX : Input.GetAxis("Mouse X"); 
+        float mouseY = Input.GetMouseButton(0) ? mouseAxisY : Input.GetAxis("Mouse Y");
+        
 
         timeSinceLastBullet += Time.deltaTime;
 
