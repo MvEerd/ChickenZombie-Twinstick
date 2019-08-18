@@ -14,6 +14,7 @@ public class ChickenAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        target = GameObject.Find("Player");
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = true;
 
