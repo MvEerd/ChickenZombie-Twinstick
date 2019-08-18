@@ -8,7 +8,6 @@ public class ChickenAI : MonoBehaviour
 {
     public GameObject target;
     public NavMeshAgent agent;
-    public GameObject player;
     public Text scoreText;
    
 
