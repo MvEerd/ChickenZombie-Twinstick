@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -12,7 +13,6 @@ public class PlayerControl : MonoBehaviour
     public GameObject Gameover;
 
     public int score = 0;
-    static public float timeSinceLastBullet = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -32,9 +32,6 @@ public class PlayerControl : MonoBehaviour
         float aimY = Input.GetMouseButton(0) ? mouseAxisY : Input.GetAxis("Mouse Y");
 
 
-        timeSinceLastBullet += Time.deltaTime;
-
-
         if (moveX != 0 || moveY != 0)
         {
             setAnimationState("Run");
@@ -49,6 +46,7 @@ public class PlayerControl : MonoBehaviour
             setAnimationState("");
         }
 
+        currentGun.cdUpdate();
 
         if (aimX != 0 || aimY != 0)
         {
