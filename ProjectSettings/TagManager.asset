@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - projectile
+  - spawner
   layers:
   - Default
   - TransparentFX
@@ -14,8 +15,9 @@ TagManager:
   - UI
   - 
   - 
-  - UserBullet
   - User
+  - UserBullet
+  - Spawner
   - 
   - 
   - 
@@ -36,8 +38,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - Enemy
   m_SortingLayers:
   - name: Default
     uniqueID: 0

@@ -17,6 +17,7 @@ public class ChickenAI : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = true;
 
+        if (!target) return;
         agent.destination = target.transform.position;
     }
 
@@ -30,11 +31,14 @@ public class ChickenAI : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        if (!alive) return;
-        alive = false;
-        Destroy(other.gameObject); // Destroy projectile
-        target.GetComponent<PlayerControl>().score += 1;
-        scoreText.text = "Score: " + target.GetComponent<PlayerControl>().score;
-        Destroy(gameObject); //Destroy AI Enemy
+        if (other.tag == "spawner") return;
+        if (alive)
+        {
+            alive = false;
+            Destroy(other.gameObject); // Destroy projectile
+            target.GetComponent<PlayerControl>().score += 1;
+            Destroy(gameObject); //Destroy AI Enemy
+            GameObject.Find("ScoreText").GetComponent<Text>().text = "Score: " + target.GetComponent<PlayerControl>().score;
+        }
     }
 }
