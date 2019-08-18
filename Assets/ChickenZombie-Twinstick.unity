@@ -2772,8 +2772,8 @@ MonoBehaviour:
   fireForce: 70
   fireTTL: 2
   fireDamage: 100
-  fireBullets: 3
-  fireSpread: 10
+  fireBullets: 4
+  fireSpread: 40
 --- !u!1 &2145220857
 GameObject:
   m_ObjectHideFlags: 0
