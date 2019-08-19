@@ -21,6 +21,7 @@ public class SpawnEgg : MonoBehaviour
         if(spawnsThisFrame >= 1){
             timer -= spawnInterval * completedSpawns;
             GameObject Enemy = Instantiate(enemy, transform.position + new Vector3(0, 0.2f, 0), Quaternion.LookRotation(transform.forward)) as GameObject;
+            GetComponent<ParticleSystem>().Play();
         }
 
     }
