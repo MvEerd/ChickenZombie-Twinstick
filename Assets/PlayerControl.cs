@@ -9,16 +9,22 @@ public class PlayerControl : MonoBehaviour
     public Rigidbody rb;
     public float speed;
     public Gun currentGun;
-
     public GameObject Gameover;
 
+    private float distToGround = 0;
     public int score = 0;
 
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
+        distToGround = GetComponent<Collider>().bounds.extents.y;
     }
-    
+    bool IsGrounded()
+    {
+        return Physics.Raycast(transform.position, -Vector3.up, distToGround + 0.05f);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -35,7 +41,7 @@ public class PlayerControl : MonoBehaviour
         if (moveX != 0 || moveY != 0)
         {
             setAnimationState("Run");
-            Vector3 tempVect = new Vector3((float)moveX * speed, rb.velocity.y, (float)moveY * speed);
+            Vector3 tempVect = new Vector3(moveX * speed, rb.velocity.y, moveY * speed);
             tempVect = tempVect.normalized * speed * Time.deltaTime;
             rb.MovePosition(transform.position + tempVect);
 
@@ -43,7 +49,7 @@ public class PlayerControl : MonoBehaviour
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(new Vector3((float)moveX * speed, 0, (float)moveY * speed)), 1000 * Time.deltaTime);
         } else
         {
-            setAnimationState("");
+            if(IsGrounded()) setAnimationState("");
         }
 
         currentGun.cdUpdate();
@@ -52,6 +58,16 @@ public class PlayerControl : MonoBehaviour
         {
             currentGun.Shoot(transform, aimX, aimY);
         }
+
+        if (Input.GetButton("Jump"))
+        {
+            if (IsGrounded())
+            {
+                rb.AddForce(Vector3.up, ForceMode.Impulse);
+            }
+        }
+
+        if (!IsGrounded()) setAnimationState("Run");
     }
 
     private void OnDestroy() {
