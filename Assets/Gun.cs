@@ -12,8 +12,8 @@ public class Gun : MonoBehaviour
     public float fireForce = 70;
     public float fireTTL = 2;
     public float fireDamage = 100;
-    public float timeLeft;
-    static public float timeSinceLastBullet = 0f;
+    protected float timeLeft;
+    protected float timeSinceLastBullet = 0f;
 
     public void cdUpdate()
     {
