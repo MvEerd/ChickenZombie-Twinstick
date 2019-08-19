@@ -37,8 +37,10 @@ public class ChickenAI : MonoBehaviour
         {
             alive = false;
             Destroy(other.gameObject); // Destroy projectile
-            target.GetComponent<PlayerControl>().score += 1;
             Destroy(gameObject); //Destroy AI Enemy
+
+            if (!target) return;
+            target.GetComponent<PlayerControl>().score += 1;
             GameObject.Find("ScoreText").GetComponent<Text>().text = "Score: " + target.GetComponent<PlayerControl>().score;
         }
     }
