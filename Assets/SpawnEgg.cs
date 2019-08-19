@@ -6,8 +6,14 @@ using UnityEngine;
 public class SpawnEgg : MonoBehaviour
 {
     public float spawnRate = 3; //Spawns per second
-    public GameObject enemy;
+    public List<GameObject> enemies;
     private float timer = 0;
+    public GameObject target;
+
+    private void Start()
+    {
+        target = GameObject.Find("Player");
+    }
 
     // Update is called once per frame
     void Update()
@@ -20,7 +26,10 @@ public class SpawnEgg : MonoBehaviour
 
         if(spawnsThisFrame >= 1){
             timer -= spawnInterval * completedSpawns;
-            GameObject Enemy = Instantiate(enemy, transform.position + new Vector3(0, 0.2f, 0), Quaternion.LookRotation(transform.forward)) as GameObject;
+            enemies.ForEach(enemy =>
+            {
+                GameObject EnemyObj = Instantiate(enemy, transform.position + new Vector3(0, 0.2f, 0), Quaternion.LookRotation(transform.forward)) as GameObject;
+            });
             GetComponent<ParticleSystem>().Play();
         }
 

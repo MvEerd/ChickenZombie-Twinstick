@@ -125,7 +125,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnRate: 3
-  enemy: {fileID: 5632546834296398685, guid: 43ac7254e6da2e7498c57a8a73a1d574, type: 3}
+  enemies:
+  - {fileID: 5632546834296398685, guid: 43ac7254e6da2e7498c57a8a73a1d574, type: 3}
+  - {fileID: 5632546834296398685, guid: 43ac7254e6da2e7498c57a8a73a1d574, type: 3}
+  target: {fileID: 0}
 --- !u!198 &9022053855256638518
 ParticleSystem:
   m_ObjectHideFlags: 0
