@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using XInputDotNetPure;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -28,14 +29,16 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float moveX = Input.GetAxis("Horizontal");
-        float moveY = Input.GetAxis("Vertical");
+        GamePadState gamePadState = GamePad.GetState(PlayerIndex.One);
+
+        float moveX = gamePadState.ThumbSticks.Left.X;
+        float moveY = gamePadState.ThumbSticks.Left.Y;
 
         float mouseAxisX = MinMax(Input.mousePosition.x, 0, Screen.width, -1, 1);
         float mouseAxisY = MinMax(Input.mousePosition.y, 0, Screen.height, -1, 1);
 
-        float aimX = Input.GetMouseButton(0) ? mouseAxisX : Input.GetAxis("Mouse X");
-        float aimY = Input.GetMouseButton(0) ? mouseAxisY : Input.GetAxis("Mouse Y");
+        float aimX = Input.GetMouseButton(0) ? mouseAxisX : gamePadState.ThumbSticks.Right.X;
+        float aimY = Input.GetMouseButton(0) ? mouseAxisY : gamePadState.ThumbSticks.Right.Y;
 
 
         if (moveX != 0 || moveY != 0)
@@ -59,7 +62,7 @@ public class PlayerControl : MonoBehaviour
             currentGun.Shoot(transform, aimX, aimY);
         }
 
-        if (Input.GetButton("Jump"))
+        if (gamePadState.Buttons.A == ButtonState.Pressed)
         {
             if (IsGrounded())
             {
@@ -69,14 +72,13 @@ public class PlayerControl : MonoBehaviour
 
         if (!IsGrounded()) setAnimationState("Run");
 
-        float rightTrigger = Input.GetAxis("RT");
-
     }
 
     private void OnDestroy() {
         Gameover.active = true;
- 
-}
+        GamePad.SetVibration(PlayerIndex.One, 0,0);
+
+    }
     void setAnimationState(string animation)
     {
         Animator animator = GetComponent<Animator>();
