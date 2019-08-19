@@ -68,6 +68,9 @@ public class PlayerControl : MonoBehaviour
         }
 
         if (!IsGrounded()) setAnimationState("Run");
+
+        float rightTrigger = Input.GetAxis("RT");
+
     }
 
     private void OnDestroy() {

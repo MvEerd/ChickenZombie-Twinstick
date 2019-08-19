@@ -409,9 +409,9 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 49251849}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &179761319 stripped
+--- !u!114 &355864642 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8318662729070041479, guid: 312b31977ed9b2d48a14849ebb8c7fb3,
+  m_CorrespondingSourceObject: {fileID: 1269230762048598479, guid: 312b31977ed9b2d48a14849ebb8c7fb3,
     type: 3}
   m_PrefabInstance: {fileID: 541594463}
   m_PrefabAsset: {fileID: 0}
@@ -859,7 +859,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4303844821561524, guid: 312b31977ed9b2d48a14849ebb8c7fb3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.002
       objectReference: {fileID: 0}
     - target: {fileID: 4303844821561524, guid: 312b31977ed9b2d48a14849ebb8c7fb3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1224,20 +1224,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
---- !u!65 &541594467
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 541594464}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.4, y: 0.44, z: 0.4}
-  m_Center: {x: 0, y: 0.23, z: 0}
+  m_CollisionDetection: 2
 --- !u!1001 &656706553
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6758,7 +6745,6 @@ GameObject:
   - component: {fileID: 1171895878}
   - component: {fileID: 1171895877}
   - component: {fileID: 1171895876}
-  - component: {fileID: 1171895879}
   m_Layer: 0
   m_Name: Terrain
   m_TagString: Untagged
@@ -6823,44 +6809,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &1171895879
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1171895875}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
 --- !u!1001 &1227347391
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7340,7 +7288,7 @@ PrefabInstance:
         type: 3}
       propertyPath: radialGunProgress
       value: 
-      objectReference: {fileID: 179761319}
+      objectReference: {fileID: 355864642}
     - target: {fileID: 8285534793840767845, guid: 60d710356dba5434c88dff01c8e6b7fd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7436,7 +7384,7 @@ PrefabInstance:
         type: 3}
       propertyPath: radialGunProgress
       value: 
-      objectReference: {fileID: 179761319}
+      objectReference: {fileID: 355864642}
     - target: {fileID: 8285534793840767845, guid: 516b94f7b2f60bb48827c6527519dbf4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7721,12 +7669,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 3869076329329614471, guid: 07ed3cc3c78272f4487aeb3265b8a357,
     type: 3}
-  radialGunProgress: {fileID: 179761319}
+  radialGunProgress: {fileID: 355864642}
   fireDelay: 0.8
   fireForce: 70
   fireTTL: 2
   fireDamage: 100
-  timeLeft: 0
   fireBullets: 4
   fireSpread: 40
 --- !u!1 &2145220857
