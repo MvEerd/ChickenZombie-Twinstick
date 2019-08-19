@@ -33,15 +33,36 @@ public class ChickenAI : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "spawner") return;
+        if(other.tag == "projectile")
+        {
+            Destroy(other.gameObject); // Destroy projectile
+            destroySelf(true);
+            return;
+        }
+        
         if (alive)
         {
-            alive = false;
-            Destroy(other.gameObject); // Destroy projectile
-            Destroy(gameObject); //Destroy AI Enemy
+            PlayerControl playerControl = other.GetComponent<PlayerControl>();
+            if (playerControl.jumpedEnemy > 0 && playerControl.jumpedEnemy < 0.1) return;
 
-            if (!target) return;
-            target.GetComponent<PlayerControl>().score += 1;
-            GameObject.Find("ScoreText").GetComponent<Text>().text = "Score: " + target.GetComponent<PlayerControl>().score;
+            if (other.GetComponent<Collider>().bounds.min.y >= GetComponent<Collider>().bounds.center.y) {
+                playerControl.jumpedEnemy = 0;
+                playerControl.Hop();
+                destroySelf(true);
+                return;
+            }
+
+            Destroy(other.gameObject); //Kill user
+            alive = false;
         }
+    }
+
+    private void destroySelf(bool score = true) 
+    {
+        Destroy(gameObject);
+
+        if (!target||!score) return;
+        target.GetComponent<PlayerControl>().score += 1;
+        GameObject.Find("ScoreText").GetComponent<Text>().text = "Score: " + target.GetComponent<PlayerControl>().score;
     }
 }

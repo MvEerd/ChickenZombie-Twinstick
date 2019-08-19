@@ -1205,10 +1205,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 541594466}
-  speed: 4
+  speed: 5
   currentGun: {fileID: 2010716811}
   Gameover: {fileID: 750854138}
+  jumpHeight: 0.5
   score: 0
+  jumpedEnemy: 0
 --- !u!54 &541594466
 Rigidbody:
   m_ObjectHideFlags: 0
