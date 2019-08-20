@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8285534793840767845}
   - component: {fileID: 9198926926869410968}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,3 +43,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8318116c6d17cc3479e543b5881d998c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectile: {fileID: 3869076329329614471, guid: 07ed3cc3c78272f4487aeb3265b8a357,
+    type: 3}
+  radialGunProgress: {fileID: 0}
+  fireDelay: 0.2
+  fireForce: 70
+  fireTTL: 2
+  fireDamage: 100

@@ -508,6 +508,24 @@ MonoBehaviour:
   target: {fileID: 0}
   agent: {fileID: 5633575545590247590}
   scoreText: {fileID: 0}
+  lootTable:
+  - name: Gunpowerup
+    prefab: {fileID: 3432997104274057220, guid: 7c8244eae91e7c74daa2d851f9d950eb,
+      type: 3}
+    dropRate: 20
+  - name: Shotgunpowerup
+    prefab: {fileID: 4984997232468966622, guid: 77c6cbdf2a4fc4346a7d5df2fcf9b776,
+      type: 3}
+    dropRate: 20
+  - name: SMG
+    prefab: {fileID: 8849959722994909269, guid: bc40c06740f98ea428162a1137e16083,
+      type: 3}
+    dropRate: 20
+  - name: LaserPW
+    prefab: {fileID: 3432997104274057220, guid: 7c8244eae91e7c74daa2d851f9d950eb,
+      type: 3}
+    dropRate: 1
+  dropRate: 30
 --- !u!1 &5632607383606531691
 GameObject:
   m_ObjectHideFlags: 0
