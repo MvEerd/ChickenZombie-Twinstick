@@ -21,6 +21,7 @@ public class ChickenAI : MonoBehaviour
     public List<Lootobject> lootTable = new List<Lootobject>();
     public int dropRate;
     private bool alive = true;
+    public int health = 100;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +38,8 @@ public class ChickenAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (health <= 0) destroySelf();
+
         if (!target) return;
         agent.destination = target.transform.position;
     }
@@ -44,13 +47,13 @@ public class ChickenAI : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "spawner") return;
-        if(other.tag == "projectile")
+        if (other.tag == "projectile")
         {
             Destroy(other.gameObject); // Destroy projectile
             destroySelf(true);
             return;
         }
-        
+
         if (alive)
         {
             PlayerControl playerControl = other.GetComponent<PlayerControl>();
@@ -79,6 +82,11 @@ public class ChickenAI : MonoBehaviour
         Destroy(gameObject);
     }
 
+    public void Damage(int damage = 100)
+    {
+        health -= damage;
+    }
+
     private void dropLoot()
     {
         if (Random.Range(0, 100) > dropRate) return;
@@ -87,11 +95,7 @@ public class ChickenAI : MonoBehaviour
         for (int i = 0; i < lootTable.Count; i++)
         {
             if (Random.Range(0, 100) > lootTable[i].dropRate) return;
-     
-            GameObject drop = Instantiate(lootTable[i].prefab, transform.position, transform.rotation) as GameObject;
-            Powerup powerup = drop.GetComponent<Powerup>();
-                
-
+                GameObject drop = Instantiate(lootTable[i].prefab, transform.position, transform.rotation) as GameObject;
             }
         }
 
