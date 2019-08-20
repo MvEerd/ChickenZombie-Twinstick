@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6816025063071941302}
-  - component: {fileID: 6035496525395068235}
+  - component: {fileID: 4391429887886277374}
   m_Layer: 0
   m_Name: Laser
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6035496525395068235
+--- !u!114 &4391429887886277374
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,13 +40,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 3183432844482214003}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8318116c6d17cc3479e543b5881d998c, type: 3}
+  m_Script: {fileID: 11500000, guid: 216a714268c1bca449d87f7daa861c65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 3869076329329614471, guid: 07ed3cc3c78272f4487aeb3265b8a357,
-    type: 3}
+  projectile: {fileID: 0}
   radialGunProgress: {fileID: 0}
-  fireDelay: 0.001
-  fireForce: 800
-  fireTTL: 1
-  fireDamage: 500
+  fireDelay: 0.2
+  fireForce: 70
+  fireTTL: 2
+  fireDamage: 100
+  fireBullets: 3
+  fireSpread: 10
+  lr: {fileID: 0}

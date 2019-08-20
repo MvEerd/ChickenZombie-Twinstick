@@ -415,7 +415,7 @@ GameObject:
   - component: {fileID: 5633575545590247591}
   m_Layer: 0
   m_Name: AIChicken
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -517,7 +517,7 @@ MonoBehaviour:
     prefab: {fileID: 4984997232468966622, guid: 77c6cbdf2a4fc4346a7d5df2fcf9b776,
       type: 3}
     dropRate: 20
-  - name: SMG
+  - name: SMGpowerup
     prefab: {fileID: 8849959722994909269, guid: bc40c06740f98ea428162a1137e16083,
       type: 3}
     dropRate: 20
