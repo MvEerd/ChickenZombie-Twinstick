@@ -8,6 +8,7 @@ public class Laser : Gun
     public int fireSpread = 10;
     public LineRenderer lr;
     public GameObject player;
+    public LayerMask layerMask;
 
     public void Update()
     {
@@ -25,7 +26,8 @@ public class Laser : Gun
         lr.startWidth = 0.3f;
         lr.endWidth = 0.3f;
         RaycastHit hit;
-        if (Physics.SphereCast(lr.GetPosition(0), 2, new Vector3((float)aimX, 0, (float)aimY), out hit, 20))
+        Debug.DrawRay(lr.GetPosition(0), new Vector3((float)aimX, 0, (float)aimY) * 10000f, Color.blue);
+        if (Physics.SphereCast(lr.GetPosition(0), 0.3f, new Vector3((float)aimX, 0, (float)aimY), out hit, 20,  layerMask))
         {
             if (hit.collider)
             {
