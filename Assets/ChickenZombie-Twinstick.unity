@@ -7935,6 +7935,11 @@ PrefabInstance:
       propertyPath: fireDelay
       value: 0.15
       objectReference: {fileID: 0}
+    - target: {fileID: 8044620632926344681, guid: 60d710356dba5434c88dff01c8e6b7fd,
+        type: 3}
+      propertyPath: fireDamage
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60d710356dba5434c88dff01c8e6b7fd, type: 3}
 --- !u!1 &1430259212

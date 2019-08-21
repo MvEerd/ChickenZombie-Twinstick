@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour
     public List<Lootobject> lootTable = new List<Lootobject>();
     public int dropRate;
     private bool alive = true;
-    public int _health = 100;
+    public float _health = 100;
     public float attackDelay = 1;
     float _lastAttack = 0;
 
@@ -54,16 +54,9 @@ public class Enemy : MonoBehaviour
         
         if (!alive) return;
 
-        if (collision.other.tag == "projectile")
+        if (collision.collider.tag=="Player")
         {
-            Destroy(collision.other.gameObject); // Destroy projectile
-            destroySelf();
-            return;
-        }
-
-        if (collision.other.tag=="Player")
-        {
-            PlayerControl playerControl = collision.other.GetComponent<PlayerControl>();
+            PlayerControl playerControl = collision.collider.GetComponent<PlayerControl>();
 
             /*if (other.GetComponent<Collider>().bounds.min.y >= GetComponent<Collider>().bounds.center.y) {
                 if (playerControl.jumpedEnemy > 0 && playerControl.jumpedEnemy < 0.1) return;
@@ -75,9 +68,23 @@ public class Enemy : MonoBehaviour
 
             if (Time.time < _lastAttack + attackDelay) return;
 
-            collision.other.gameObject.GetComponent<PlayerControl>().Damage(10);
+            collision.collider.gameObject.GetComponent<PlayerControl>().Damage(10);
             _lastAttack = Time.time;
         }
+    }
+
+    private void OnTriggerEnter(Collider collider)
+    {
+
+        if (!alive) return;
+
+        if (collider.tag == "projectile")
+        {
+            Damage(collider.GetComponent<Bullet>().damage);
+            Destroy(collider.gameObject); // Destroy projectile
+            return;
+        }
+
     }
 
     private void destroySelf() 
@@ -87,7 +94,7 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void Damage(int damage = 100)
+    public void Damage(float damage = 100)
     {
         _health -= damage;
         if (_health <= 0)

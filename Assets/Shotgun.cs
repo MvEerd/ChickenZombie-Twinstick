@@ -17,8 +17,6 @@ public class Shotgun : Gun
 
         Vector3 bulletBuffer = lookRotation * new Vector3(0, 0, 0.5f);
 
-        List<GameObject> bullets = new List<GameObject>();
-
         for(int i = 0; i<fireBullets; i++)
         {
             int maxAngle = fireSpread / 2;
@@ -27,15 +25,14 @@ public class Shotgun : Gun
             float Angle = minAngle + ((maxAngle - minAngle) / fireBullets * i);
 
             GameObject bullet = Instantiate(projectile, transform.position + bulletBuffer + new Vector3(0, 0.2f, 0), lookRotation * Quaternion.Euler(0, Angle, 0));
-            bullet.transform.localScale = bullet.transform.localScale * 0.8f;
-            bullets.Add(bullet);
+            bullet.transform.localScale = bullet.transform.localScale * 0.8f; //Reduce bullet size
+            Bullet bulletScript = bullet.AddComponent<Bullet>();
+            bulletScript.damage = fireDamage;
+            bullet.GetComponent<Rigidbody>().AddForce(bullet.transform.forward * fireForce);
+            Destroy(bullet, fireTTL);
         }
         
 
-        bullets.ForEach(b => {
-            b.GetComponent<Rigidbody>().AddForce(b.transform.forward * fireForce);
-            Destroy(b, fireTTL);
-        });
 
     }
 }
