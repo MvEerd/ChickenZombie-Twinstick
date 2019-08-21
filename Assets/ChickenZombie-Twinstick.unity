@@ -7860,6 +7860,21 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 8044620632926344681, guid: 60d710356dba5434c88dff01c8e6b7fd,
+        type: 3}
+      propertyPath: radialGunProgress
+      value: 
+      objectReference: {fileID: 355864642}
+    - target: {fileID: 8044620632926344681, guid: 60d710356dba5434c88dff01c8e6b7fd,
+        type: 3}
+      propertyPath: fireDelay
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8044620632926344681, guid: 60d710356dba5434c88dff01c8e6b7fd,
+        type: 3}
+      propertyPath: fireDamage
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 9198926926869410968, guid: 60d710356dba5434c88dff01c8e6b7fd,
         type: 3}
       propertyPath: radialGunProgress
@@ -7924,21 +7939,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8044620632926344681, guid: 60d710356dba5434c88dff01c8e6b7fd,
-        type: 3}
-      propertyPath: radialGunProgress
-      value: 
-      objectReference: {fileID: 355864642}
-    - target: {fileID: 8044620632926344681, guid: 60d710356dba5434c88dff01c8e6b7fd,
-        type: 3}
-      propertyPath: fireDelay
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 8044620632926344681, guid: 60d710356dba5434c88dff01c8e6b7fd,
-        type: 3}
-      propertyPath: fireDamage
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60d710356dba5434c88dff01c8e6b7fd, type: 3}
