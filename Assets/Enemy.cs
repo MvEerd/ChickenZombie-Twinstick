@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 
-public class ChickenAI : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
 
     [System.Serializable]

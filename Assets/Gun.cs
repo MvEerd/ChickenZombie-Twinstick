@@ -41,7 +41,7 @@ public class Gun : MonoBehaviour
         timeSinceLastBullet = 0;
         radialGunProgress.fillAmount = 0;
 
-    Vector3 bulletBuffer = lookRotation * new Vector3(0, 0, 0.5f);
+        Vector3 bulletBuffer = lookRotation * new Vector3(0, 0, 0.5f);
 
         GameObject bullet = Instantiate(projectile, transform.position + bulletBuffer + new Vector3(0, 0.2f, 0), lookRotation) as GameObject;
         bullet.GetComponent<Rigidbody>().AddForce(bullet.transform.forward * fireForce);

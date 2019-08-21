@@ -44,7 +44,9 @@ public class Laser : Gun
                     sparkObj.transform.position = hit.point;
                     sparkObj.transform.rotation = Quaternion.FromToRotation(Vector3.forward, hit.normal);
 
-                    hit.collider.GetComponent<ChickenAI>().Damage(9); //Damage per frame
+                    Enemy enemy = hit.collider.GetComponent<Enemy>();
+                    if(enemy)
+                        enemy.Damage(9); //Damage per frame
 
                 return;
             }

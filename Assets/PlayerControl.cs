@@ -75,6 +75,7 @@ public class PlayerControl : MonoBehaviour
         if (_aimDirection != Vector3.zero)
         {
             currentGun.Shoot(transform, aimX, aimY);
+            setAnimationState("Run");
         } else
         {
             currentGun.IdleGun();

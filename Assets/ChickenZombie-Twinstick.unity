@@ -2232,6 +2232,21 @@ PrefabInstance:
       propertyPath: radialGunProgress
       value: 
       objectReference: {fileID: 355864642}
+    - target: {fileID: 7251730765560373840, guid: 74e8507ec40a74f4c96cc416df42b6b1,
+        type: 3}
+      propertyPath: fireForce
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7251730765560373840, guid: 74e8507ec40a74f4c96cc416df42b6b1,
+        type: 3}
+      propertyPath: fireSpread
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7251730765560373840, guid: 74e8507ec40a74f4c96cc416df42b6b1,
+        type: 3}
+      propertyPath: fireDelay
+      value: 0.7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74e8507ec40a74f4c96cc416df42b6b1, type: 3}
 --- !u!1 &951219191
