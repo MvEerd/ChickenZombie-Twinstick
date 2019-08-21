@@ -17,11 +17,12 @@ public class ChickenAI : MonoBehaviour
 
     public GameObject target;
     public NavMeshAgent agent;
-    public Text scoreText;
     public List<Lootobject> lootTable = new List<Lootobject>();
     public int dropRate;
     private bool alive = true;
-    public int health = 100;
+    public int _health = 100;
+    public float attackDelay = 1;
+    float _lastAttack = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -38,23 +39,28 @@ public class ChickenAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (health <= 0) destroySelf();
+        if (_health <= 0){
+            alive = false;
+            destroySelf();
+            return;
+        }
 
         if (!target) return;
         agent.destination = target.transform.position;
     }
     
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if (other.tag == "spawner") return;
+        if (!alive) return;
+
         if (other.tag == "projectile")
         {
             Destroy(other.gameObject); // Destroy projectile
-            destroySelf(true);
+            destroySelf();
             return;
         }
 
-        if (alive)
+        if (other.tag=="Player")
         {
             PlayerControl playerControl = other.GetComponent<PlayerControl>();
 
@@ -62,29 +68,32 @@ public class ChickenAI : MonoBehaviour
                 if (playerControl.jumpedEnemy > 0 && playerControl.jumpedEnemy < 0.1) return;
                 playerControl.Hop();
                 playerControl.jumpedEnemy = 0;
-                destroySelf(true);
+                destroySelf();
                 return;
             }
 
-            Destroy(other.gameObject); //Kill user
-            alive = false;
+            if (Time.time < _lastAttack + attackDelay) return;
+
+            other.gameObject.GetComponent<PlayerControl>().Damage(10);
+            _lastAttack = Time.time;
         }
     }
 
-    private void destroySelf(bool score = true) 
+    private void destroySelf() 
     {
         dropLoot();
-
-        if (!target||!score) return;
-        target.GetComponent<PlayerControl>().score += 1;
-        GameObject.Find("ScoreText").GetComponent<Text>().text = "Score: " + target.GetComponent<PlayerControl>().score;
 
         Destroy(gameObject);
     }
 
     public void Damage(int damage = 100)
     {
-        health -= damage;
+        _health -= damage;
+        if (_health <= 0)
+        {
+            alive = false;
+            destroySelf();
+        }
     }
 
     private void dropLoot()

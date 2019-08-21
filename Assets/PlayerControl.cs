@@ -16,6 +16,7 @@ public class PlayerControl : MonoBehaviour
     public LayerMask Ground;
     private bool _isGrounded = true;
     private Transform _groundChecker;
+    private int _health = 100;
 
     private float distToGround = 0;
     public int score = 0;
@@ -47,8 +48,18 @@ public class PlayerControl : MonoBehaviour
         _moveDirection.x = Input.GetAxis("Horizontal");
         _moveDirection.z = Input.GetAxis("Vertical");
 
-        //Rotate and set running animation while moving
-        if (_moveDirection != Vector3.zero)
+        float mouseAxisX = MinMax(Input.mousePosition.x, 0, Screen.width, -1, 1);
+        float mouseAxisY = MinMax(Input.mousePosition.y, 0, Screen.height, -1, 1);
+
+        float aimX = Input.GetMouseButton(0) ? mouseAxisX : Input.GetAxis("Mouse X");
+        float aimY = Input.GetMouseButton(0) ? mouseAxisY : Input.GetAxis("Mouse Y");
+        Vector3 _aimDirection = Vector3.zero;
+        _aimDirection = Vector3.zero;
+        _aimDirection.x = aimX;
+        _aimDirection.z = aimY;
+
+        //Rotate and set running animation while moving but not aiming
+        if (_moveDirection != Vector3.zero && _aimDirection == Vector3.zero)
         {
             transform.forward = _moveDirection;
             setAnimationState("Run");
@@ -56,22 +67,17 @@ public class PlayerControl : MonoBehaviour
         {
             if (_isGrounded) setAnimationState("");
         }
-
         //Play Run animation while falling to flap wings
         if (!_isGrounded) setAnimationState("Run");
 
 
-        float mouseAxisX = MinMax(Input.mousePosition.x, 0, Screen.width, -1, 1);
-        float mouseAxisY = MinMax(Input.mousePosition.y, 0, Screen.height, -1, 1);
-
-        float aimX = Input.GetMouseButton(0) ? mouseAxisX : Input.GetAxis("Mouse X");
-        float aimY = Input.GetMouseButton(0) ? mouseAxisY : Input.GetAxis("Mouse Y");
-
-        currentGun.cdUpdate();
-
-        if (aimX != 0 || aimY != 0)
+        currentGun.UpdateGun();
+        if (_aimDirection != Vector3.zero)
         {
             currentGun.Shoot(transform, aimX, aimY);
+        } else
+        {
+            currentGun.IdleGun();
         }
 
         if (Input.GetButton("Jump"))
@@ -94,6 +100,15 @@ public class PlayerControl : MonoBehaviour
     public void Hop()
     {
         rb.AddForce(Vector3.up * Mathf.Sqrt(0.5f * -2f * Physics.gravity.y), ForceMode.VelocityChange);
+    }
+
+    public void Damage(int damage = 10)
+    {
+        _health -= damage;
+        if (_health <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnDestroy() {

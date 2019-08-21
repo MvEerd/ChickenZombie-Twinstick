@@ -15,7 +15,7 @@ public class Gun : MonoBehaviour
     protected float timeLeft;
     protected float timeSinceLastBullet = 0f;
 
-    public void cdUpdate()
+    virtual public void UpdateGun()
     {
         timeSinceLastBullet += Time.deltaTime;
         if (radialGunProgress.fillAmount < 1)
@@ -24,6 +24,11 @@ public class Gun : MonoBehaviour
             timeLeft = timeLeft < 0 ? 0 : timeLeft;
             radialGunProgress.fillAmount = 1- (timeLeft / fireDelay);
         }
+    }
+
+    virtual public void IdleGun()
+    {
+
     }
 
     virtual public void Shoot(Transform transform, float aimX, float aimY)

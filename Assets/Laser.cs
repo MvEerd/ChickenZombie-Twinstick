@@ -9,37 +9,47 @@ public class Laser : Gun
     public LineRenderer lr;
     public GameObject player;
     public LayerMask layerMask;
+    public GameObject sparkObj;
 
-    public void Update()
+    override public void UpdateGun()
+    {
+        lr.SetPosition(0, player.GetComponent<Collider>().bounds.center);
+    }
+
+    override public void IdleGun()
     {
         lr.startWidth = 0;
         lr.endWidth = 0;
-
-        lr.SetPosition(0, player.GetComponent<Collider>().bounds.center);
-        cdUpdate();
+        sparkObj.SetActive(false);
     }
+
 
     override public void Shoot(Transform transform, float aimX, float aimY)
     {
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3((float)aimX, 0, (float)aimY));
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, lookRotation, 1000 * Time.deltaTime);
+
+        //lr.SetPosition(0, player.GetComponent<Collider>().bounds.center);
         lr.SetPosition(1, lookRotation * (Vector3.forward*20) + player.GetComponent<Collider>().bounds.center);
         lr.startWidth = 0.3f;
         lr.endWidth = 0.3f;
         RaycastHit hit;
-        Debug.DrawRay(lr.GetPosition(0), new Vector3((float)aimX, 0, (float)aimY) * 10000f, Color.blue);
+        //Debug.DrawRay(lr.GetPosition(0), new Vector3((float)aimX, 0, (float)aimY) * 10000f, Color.blue);
         if (Physics.SphereCast(lr.GetPosition(0), 0.3f, new Vector3((float)aimX, 0, (float)aimY), out hit, 20,  layerMask))
         {
             if (hit.collider)
             {
-                if (hit.collider.tag == "enemy")
-                {
                     lr.SetPosition(1, hit.point);
-                    hit.collider.GetComponent<ChickenAI>().Damage(12); //Damage per frame
-                }
+                    sparkObj.SetActive(true);
+                    sparkObj.transform.position = hit.point;
+                    sparkObj.transform.rotation = Quaternion.FromToRotation(Vector3.forward, hit.normal);
+
+                    hit.collider.GetComponent<ChickenAI>().Damage(9); //Damage per frame
+
+                return;
             }
-
-
         }
-
+        sparkObj.SetActive(false);//Hide spark if nothing is hit
     }
+
 }
