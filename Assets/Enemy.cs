@@ -49,32 +49,33 @@ public class Enemy : MonoBehaviour
         agent.destination = target.transform.position;
     }
     
-    private void OnTriggerStay(Collider other)
+    private void OnCollisionStay(Collision collision)
     {
+        
         if (!alive) return;
 
-        if (other.tag == "projectile")
+        if (collision.other.tag == "projectile")
         {
-            Destroy(other.gameObject); // Destroy projectile
+            Destroy(collision.other.gameObject); // Destroy projectile
             destroySelf();
             return;
         }
 
-        if (other.tag=="Player")
+        if (collision.other.tag=="Player")
         {
-            PlayerControl playerControl = other.GetComponent<PlayerControl>();
+            PlayerControl playerControl = collision.other.GetComponent<PlayerControl>();
 
-            if (other.GetComponent<Collider>().bounds.min.y >= GetComponent<Collider>().bounds.center.y) {
+            /*if (other.GetComponent<Collider>().bounds.min.y >= GetComponent<Collider>().bounds.center.y) {
                 if (playerControl.jumpedEnemy > 0 && playerControl.jumpedEnemy < 0.1) return;
                 playerControl.Hop();
                 playerControl.jumpedEnemy = 0;
                 destroySelf();
                 return;
-            }
+            }*/
 
             if (Time.time < _lastAttack + attackDelay) return;
 
-            other.gameObject.GetComponent<PlayerControl>().Damage(10);
+            collision.other.gameObject.GetComponent<PlayerControl>().Damage(10);
             _lastAttack = Time.time;
         }
     }

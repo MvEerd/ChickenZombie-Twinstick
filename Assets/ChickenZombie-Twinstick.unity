@@ -350,7 +350,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0100a7ade83256448bdf0149693d4ae7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerupGun: {fileID: 1490895740}
+  powerupGun: {fileID: 0}
   gunString: SMG
 --- !u!65 &49251852
 BoxCollider:
@@ -1484,7 +1484,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 541594466}
   speed: 5
-  currentGun: {fileID: 232886268}
+  currentGun: {fileID: 1073800840}
   Gameover: {fileID: 750854138}
   jumpHeight: 0.5
   GroundDistance: 0.2
@@ -7187,6 +7187,18 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &1073800840 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8044620632926344681, guid: 60d710356dba5434c88dff01c8e6b7fd,
+    type: 3}
+  m_PrefabInstance: {fileID: 1425424730}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ec3c6cbfdac51d40a6a07e69a33a353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1139090407
 GameObject:
   m_ObjectHideFlags: 0
@@ -7913,6 +7925,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8044620632926344681, guid: 60d710356dba5434c88dff01c8e6b7fd,
+        type: 3}
+      propertyPath: radialGunProgress
+      value: 
+      objectReference: {fileID: 355864642}
+    - target: {fileID: 8044620632926344681, guid: 60d710356dba5434c88dff01c8e6b7fd,
+        type: 3}
+      propertyPath: fireDelay
+      value: 0.15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60d710356dba5434c88dff01c8e6b7fd, type: 3}
 --- !u!1 &1430259212
@@ -7981,7 +8003,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 1
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -8042,18 +8064,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1490895740 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9198926926869410968, guid: 60d710356dba5434c88dff01c8e6b7fd,
-    type: 3}
-  m_PrefabInstance: {fileID: 1425424730}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8318116c6d17cc3479e543b5881d998c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1643819890 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 336834158306531044, guid: d220a024d7d0d1041a9eeec6d72d8308,
@@ -8362,6 +8372,11 @@ PrefabInstance:
         type: 3}
       propertyPath: spawnRate
       value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 336834158306531048, guid: d220a024d7d0d1041a9eeec6d72d8308,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d220a024d7d0d1041a9eeec6d72d8308, type: 3}
