@@ -80,8 +80,11 @@ public class Enemy : MonoBehaviour
 
         if (collider.tag == "projectile")
         {
-            Damage(collider.GetComponent<Bullet>().damage);
-            Destroy(collider.gameObject); // Destroy projectile
+            Bullet bullet = collider.GetComponent<Bullet>();
+            Damage(bullet.damage);
+            if(!bullet.piercing)
+                Destroy(collider.gameObject); // Destroy projectile
+
             return;
         }
 

@@ -5,4 +5,5 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public float damage = 100;
+    public bool piercing = false;
 }
