@@ -26,7 +26,7 @@ public class Shotgun : Gun
 
             GameObject bullet = Instantiate(projectile, transform.position + bulletBuffer + new Vector3(0, 0.2f, 0), lookRotation * Quaternion.Euler(0, Angle, 0));
             bullet.transform.localScale = bullet.transform.localScale * 0.8f; //Reduce bullet size
-            Bullet bulletScript = bullet.AddComponent<Bullet>();
+            Bullet bulletScript = bullet.GetComponent<Bullet>();
             bulletScript.damage = fireDamage;
             bullet.GetComponent<Rigidbody>().AddForce(bullet.transform.forward * fireForce);
             Destroy(bullet, fireTTL);

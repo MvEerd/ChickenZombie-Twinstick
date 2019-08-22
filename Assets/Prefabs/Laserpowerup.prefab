@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7781515378537270217}
   - component: {fileID: 7781515378537270198}
   - component: {fileID: 7781515378537270199}
+  - component: {fileID: -8722569332468311308}
   m_Layer: 0
   m_Name: Laserpowerup
   m_TagString: Untagged
@@ -107,3 +108,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerupGun: {fileID: 0}
   gunString: Laser
+--- !u!114 &-8722569332468311308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7781515378537270197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ecab2de77de43b4c98416eff77f0282, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  degreesPerSecond: 15
+  amplitude: 0.5
+  frequency: 1

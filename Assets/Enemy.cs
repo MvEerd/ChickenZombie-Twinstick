@@ -20,9 +20,13 @@ public class Enemy : MonoBehaviour
     public List<Lootobject> lootTable = new List<Lootobject>();
     public int dropRate;
     private bool alive = true;
-    public float _health = 100;
+    private float _health = 100;
+    public float maxHealth = 100;
     public float attackDelay = 1;
     float _lastAttack = 0;
+    public GameObject healthbarCanvas;
+    public Slider healthBar;
+    public float _healthBarTime;
 
     // Start is called before the first frame update
     void Start()
@@ -43,6 +47,13 @@ public class Enemy : MonoBehaviour
             alive = false;
             destroySelf();
             return;
+        }
+
+        if (healthbarCanvas.activeSelf)
+        {
+            _healthBarTime += Time.deltaTime;
+            if (_healthBarTime > 2)
+                healthbarCanvas.SetActive(false);
         }
 
         if (!target) return;
@@ -81,6 +92,7 @@ public class Enemy : MonoBehaviour
         if (collider.tag == "projectile")
         {
             Bullet bullet = collider.GetComponent<Bullet>();
+            print(bullet.damage);
             Damage(bullet.damage);
             if(!bullet.piercing)
                 Destroy(collider.gameObject); // Destroy projectile
@@ -104,6 +116,12 @@ public class Enemy : MonoBehaviour
         {
             alive = false;
             destroySelf();
+        }
+        if(_health < maxHealth)
+        {
+            healthBar.value = _health;
+            _healthBarTime = 0;
+            healthbarCanvas.SetActive(true);
         }
     }
 

@@ -44,7 +44,7 @@ public class Gun : MonoBehaviour
         Vector3 bulletBuffer = lookRotation * new Vector3(0, 0, 0.5f);
 
         GameObject bullet = Instantiate(projectile, transform.position + bulletBuffer + new Vector3(0, 0.2f, 0), lookRotation) as GameObject;
-        Bullet bulletScript = bullet.AddComponent<Bullet>();
+        Bullet bulletScript = bullet.GetComponent<Bullet>();
         bulletScript.damage = fireDamage;
 
         bullet.GetComponent<Rigidbody>().AddForce(bullet.transform.forward * fireForce);

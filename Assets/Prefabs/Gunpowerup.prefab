@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3432997104274057336}
   - component: {fileID: 3432997104274057223}
   - component: {fileID: 3432997104274057222}
+  - component: {fileID: 6483266355918428044}
   m_Layer: 0
   m_Name: Gunpowerup
   m_TagString: Untagged
@@ -107,3 +108,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerupGun: {fileID: 0}
   gunString: Gun
+--- !u!114 &6483266355918428044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3432997104274057220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ecab2de77de43b4c98416eff77f0282, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  degreesPerSecond: 15
+  amplitude: 0.5
+  frequency: 1

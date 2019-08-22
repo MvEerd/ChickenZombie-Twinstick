@@ -17,6 +17,7 @@ public class PlayerControl : MonoBehaviour
     private bool _isGrounded = true;
     private Transform _groundChecker;
     private int _health = 100;
+    public Slider healthBar;
 
     private float distToGround = 0;
     public int score = 0;
@@ -110,6 +111,7 @@ public class PlayerControl : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        healthBar.value = _health;
     }
 
     private void OnDestroy() {

@@ -19,7 +19,7 @@ public class SMG : Gun
 
         GameObject bullet = Instantiate(projectile, transform.position + bulletBuffer + new Vector3(0, 0.2f, 0), lookRotation * randomSpread) as GameObject;
         bullet.transform.localScale = bullet.transform.localScale * 0.7f; //Reduce bullet size
-        Bullet bulletScript = bullet.AddComponent<Bullet>();
+        Bullet bulletScript = bullet.GetComponent<Bullet>();
         bulletScript.damage = fireDamage;
 
         bullet.GetComponent<Rigidbody>().AddForce(bullet.transform.forward * fireForce);
