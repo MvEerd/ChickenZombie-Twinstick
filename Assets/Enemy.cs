@@ -133,7 +133,10 @@ public class Enemy : MonoBehaviour
         for (int i = 0; i < lootTable.Count; i++)
         {
             if (Random.Range(0, 100) > lootTable[i].dropRate) return;
-                GameObject drop = Instantiate(lootTable[i].prefab, transform.position, transform.rotation) as GameObject;
+
+            Vector3 randomPosition = transform.position + Random.insideUnitSphere * 0.6f;
+            randomPosition.y = 0.25f;
+            GameObject drop = Instantiate(lootTable[i].prefab, randomPosition, transform.rotation) as GameObject;
             }
         }
 
