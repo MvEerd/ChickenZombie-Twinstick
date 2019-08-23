@@ -20,8 +20,8 @@ public class Enemy : MonoBehaviour
     public List<Lootobject> lootTable = new List<Lootobject>();
     public int dropRate;
     private bool alive = true;
-    private float _health = 100;
     public float maxHealth = 100;
+    private float _health = 100;
     public float attackDelay = 1;
     float _lastAttack = 0;
     public GameObject healthbarCanvas;
@@ -31,6 +31,8 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _health = maxHealth;
+        healthBar.maxValue = maxHealth;
         target = GameObject.Find("Player");
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = true;
