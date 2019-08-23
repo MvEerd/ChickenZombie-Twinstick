@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UI_retry : MonoBehaviour, IPointerDownHandler, IPointerClickHandler,
     IPointerUpHandler, IPointerExitHandler, IPointerEnterHandler
@@ -19,12 +20,12 @@ public class UI_retry : MonoBehaviour, IPointerDownHandler, IPointerClickHandler
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log("Mouse Enter");
+        gameObject.GetComponent<Text>().color = Color.white;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        Debug.Log("Mouse Exit");
+        gameObject.GetComponent<Text>().color = Color.black;
     }
 
     public void OnPointerUp(PointerEventData eventData)
