@@ -10,6 +10,7 @@ public class Laser : Gun
     public GameObject player;
     public LayerMask layerMask;
     public GameObject sparkObj;
+    public float damagePerFrame = 5;
 
     override public void UpdateGun()
     {
@@ -31,8 +32,8 @@ public class Laser : Gun
 
         //lr.SetPosition(0, player.GetComponent<Collider>().bounds.center);
         lr.SetPosition(1, lookRotation * (Vector3.forward*20) + player.GetComponent<Collider>().bounds.center);
-        lr.startWidth = 0.3f;
-        lr.endWidth = 0.3f;
+        lr.startWidth = 0.06f * damagePerFrame;
+        lr.endWidth = 0.06f * damagePerFrame;
         RaycastHit hit;
         //Debug.DrawRay(lr.GetPosition(0), new Vector3((float)aimX, 0, (float)aimY) * 10000f, Color.blue);
         if (Physics.SphereCast(lr.GetPosition(0), 0.3f, new Vector3((float)aimX, 0, (float)aimY), out hit, 20,  layerMask))
@@ -46,7 +47,7 @@ public class Laser : Gun
 
                     Enemy enemy = hit.collider.GetComponent<Enemy>();
                     if(enemy)
-                        enemy.Damage(9); //Damage per frame
+                        enemy.Damage(damagePerFrame); //Damage per frame
 
                 return;
             }
